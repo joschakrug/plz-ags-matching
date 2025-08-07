@@ -3,6 +3,7 @@ here::i_am("src/match-data.R")
 library(dplyr)
 library(sf)
 library(here)
+library(ggplot2)
 
 # A Load PLZ and municipality shapefiles ---------------------------------------
 
@@ -10,6 +11,7 @@ plz <- st_read(here("data-raw", "nrw-postleitzahlen")) |>
   select(
     PLZ = plz_code,
     PLZNAM = plz_name,
+    PLZKRS = krs_code,
     geometry
   )
 
@@ -41,15 +43,29 @@ plzmun <- st_intersection(plz, municipalities, model = "closed")
 # example plot for visual inspection and to generate the example figure used in
 # the README file
 
-plzmun |>
-  filter(stringr::str_sub(AGS, start = 1, end = 2) == "05") |>
-  ggplot2::ggplot() +
-    ggplot2::geom_sf(fill = "white")
-
+ggplot() +
+  geom_sf(
+    data = filter(plzmun, stringr::str_sub(AGS, start = 1, end = 2) == "05"),
+    fill = "white"
+  ) +
+  geom_sf(
+    data = filter(municipalities, stringr::str_sub(AGS, start = 1, end = 2) == "05"),
+    fill = NA, linewidth = 0.5, colour = alpha("red", 0.7)
+  ) +
+  geom_sf(
+    data = filter(plz, stringr::str_sub(PLZKRS, start = 1, end = 2) == "05"),
+    fill = NA, linewidth = 0.16, colour = alpha("blue", 1)
+  ) +
+  theme(
+    axis.text = element_text(size = 7)
+  )
+  
 ggplot2::ggsave(
   here("output", "figures", "plz-ags-map_NRW.png"),
   width = 300, height = 300, units = "px", scale = 3
 )
+
+plzmun <- select(plzmun, -PLZKRS)
 
 # C Store the results ----------------------------------------------------------
 
