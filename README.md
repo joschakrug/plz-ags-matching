@@ -12,7 +12,7 @@ In addition, the intersection of PLZ and AGS areas provides a direct corresponde
 This project generates two output data sets:
 
 - `plz-ags.shp`: A shape file of all PLZ-AGS combinations in Germany
-- `plz-ags-mapping.csv`: A lightweight CSV table containing the correspondence between PLZ and AGS
+- `plz-ags-correspondence.csv`: A lightweight CSV table containing the correspondence between PLZ and AGS
 
 You can download the most recent versions of both data sets under the [Releases](https://github.com/joschakrug/plz-ags-matching/releases) tab of this repository.
 

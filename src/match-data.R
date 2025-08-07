@@ -80,6 +80,6 @@ st_write(
 plzmun |>
   select(-geometry) |>
   write.csv(
-    here("output", "data", "plz-ags-mapping.csv"),
+    here("output", "data", "plz-ags-correspondence.csv"),
     row.names = FALSE
   )
