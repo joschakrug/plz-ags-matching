@@ -48,7 +48,7 @@ plzmun |>
 
 ggplot2::ggsave(
   here("output", "figures", "plz-ags-map_NRW.png"),
-  width = 10, height = 10, units = "cm"
+  width = 300, height = 300, units = "px", scale = 3
 )
 
 # C Store the results ----------------------------------------------------------

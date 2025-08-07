@@ -1,9 +1,11 @@
 # Matching of German postal codes (PLZ) and municipality identifiers (AGS)
 
-This project provides a matching from German postal codes (*Postleitzahlen*, PLZ) to 8-digit German municipality identifiers (*Amtliche Gemeindeschlüssel*, AGS) as of 2022 based on open government data.
+This project provides an intersection of German postal codes (*Postleitzahlen*, PLZ) and 8-digit German municipality identifiers (*Amtliche Gemeindeschlüssel*, AGS) as of 2022 based on open government data. PLZ-AGS combinations can be very helpful units of aggregation for spatial point data because of their granularity: PLZ are very granular in densely populated areas (the major cities in Germany have a large number of different post codes, but in rural areas one post code may span several municipalities), whereas municipality identifiers are much more granular in sparsely populated areas.
 
 ![Example of the intersection of PLZ and AGS areas for the German state of North Rhine-Westphalia (NRW)](output/figures/plz-ags-map_NRW.png)
 *PLZ-AGS combinations in the state of North Rhine-Westphalia*
+
+In addition, the intersection of PLZ and AGS areas provides a direct many-to-many matching between PLZ and AGS codes. If one has a PLZ code of a point in space (for example, an establishment of a firm) and wants to obtain the corresponding AGS municipality code, it is easy to match this PLZ to the small set of candidate municipalities.
 
 ## Resulting data
 
@@ -12,7 +14,7 @@ This project generates two output data sets:
 - `plz-ags.shp`: A shape file of each PLZ-AGS intersection in Germany
 - `plz-ags-mapping.csv`: A lightweight CSV table containing a many-to-many map between PLZ and AGS
 
-You can download the most recent versions of both data sets under the Releases tab of this repository.
+You can download the most recent versions of both data sets under the [Releases](https://github.com/joschakrug/plz-ags-matching/releases) tab of this repository.
 
 ### Description of variables
 
