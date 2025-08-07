@@ -57,12 +57,12 @@ ggplot() +
     fill = NA, linewidth = 0.16, colour = alpha("blue", 1)
   ) +
   theme(
-    axis.text = element_text(size = 7)
+    axis.text = element_text(size = 4)
   )
   
 ggplot2::ggsave(
   here("output", "figures", "plz-ags-map_NRW.png"),
-  width = 300, height = 300, units = "px", scale = 3
+  width = 300, height = 300, units = "px", scale = 2
 )
 
 plzmun <- select(plzmun, -PLZKRS)
